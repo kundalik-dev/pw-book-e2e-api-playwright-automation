@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import envConfig from "../../env/env-config";
 
-test("check env file is has env values", async ({  }) => {
+test("should have env file with env values defined", async ({}) => {
   console.log("env name is", envConfig.envName);
   console.log("env name is", envConfig.apiBaseURL);
   console.log("env name is", envConfig.baseURL);
