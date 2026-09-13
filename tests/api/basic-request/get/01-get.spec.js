@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import envConfig from "../../../env/env-config";
+import envConfig from "../../../../env/env-config";
 
 test("should get status code 200", async ({ request }) => {
   const resposne = await request.get(`${envConfig.apiBaseURL}/authors`);
