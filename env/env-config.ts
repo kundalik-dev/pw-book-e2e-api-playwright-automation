@@ -16,4 +16,6 @@ const envCollection: EnvCollection = {
 
 const envConfig = getEnvConfig(envCollection, process.env.ENV);
 
+console.log(`🚀🚀 Test Running in ${envConfig.envName}.`);
+
 export default envConfig;
