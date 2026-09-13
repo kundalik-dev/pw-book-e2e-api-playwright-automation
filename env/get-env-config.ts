@@ -3,9 +3,9 @@ import { hasOwnKey } from "../utils/object-utils";
 
 export function getEnvConfig(
   collection: EnvCollection,
-  rawEnvironment: string | undefined,
+  envValue: string | undefined,
 ): EnvConfig {
-  const environment = rawEnvironment?.trim().toUpperCase();
+  const environment = envValue?.trim().toUpperCase();
 
   if (!environment) {
     throw new Error("ENV variable is not configured.");
