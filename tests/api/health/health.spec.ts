@@ -1,7 +1,9 @@
 import { test, expect } from "@playwright/test";
 import envConfig from "../../../env/env-config";
 import { apiBaseURL, getHeader } from "../../../utils/api-helpers";
-import { healthApiData } from "../../../test-data/api/health.get";
+import { healthApiData } from "../../../test-data/api/health/health.get";
+import { jsonSchemaValidator } from "../../../utils/jsonSchemaValidator";
+import healthApiSchema from "../../../test-data/api/health/health-shema.json";
 
 test.describe("Heath API - My Test @api", () => {
   test("should get status code 200", async ({ request }) => {
@@ -63,5 +65,11 @@ test.describe("Health API - Functional tests @api @smoke", () => {
     await request.get(apiBaseURL(healthApiData.endpoint));
     const duration = Date.now() - start;
     expect(duration).toBeLessThan(healthApiData.maxResponseTime ?? 500);
+  });
+
+  test("should match json schema", async ({ request }) => {
+    const response = await request.get(apiBaseURL(healthApiData.endpoint));
+    const isValid = jsonSchemaValidator(healthApiSchema, response);
+    expect(isValid).toBeTruthy();
   });
 });
