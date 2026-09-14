@@ -2,13 +2,15 @@
 
 ## Separation of concerns
 
-| Kind of “data” | Put it in | Example |
-|----------------|-----------|---------|
-| TypeScript shape | `types/` | `HealthResponse` |
-| Expected values / tables | `test-data/` | status 200, `"ok"` |
-| Runtime JSON Schema | `test-data/**/*.schema.json` | Ajv contract |
-| Secrets | `.env` | `EMAIL`, `PASSWORD` |
-| Unique dynamic values | `test-data/factories/` | `user_${Date.now()}@mail.test` |
+
+| Kind of “data”           | Put it in                    | Example                        |
+| ------------------------ | ---------------------------- | ------------------------------ |
+| TypeScript shape         | `types/`                     | `HealthResponse`               |
+| Expected values / tables | `test-data/`                 | status 200, `"ok"`             |
+| Runtime JSON Schema      | `test-data/**/*.schema.json` | Ajv contract                   |
+| Secrets                  | `.env`                       | `EMAIL`, `PASSWORD`            |
+| Unique dynamic values    | `test-data/factories/`       | `user_${Date.now()}@mail.test` |
+
 
 Never mix secrets into committed data files. Prefer env getters (as `loginUsers.valid` already does).
 
@@ -25,6 +27,8 @@ test-data/factories/
   user.factory.ts          # buildRegisterPayload()
 ```
 
+
+
 ### Expectation file pattern (keep)
 
 Your current `health.get.ts` style is good — keep it:
@@ -38,6 +42,8 @@ export const healthApiData = {
   maxResponseTime: 500,
 };
 ```
+
+
 
 ### Schema pattern
 
@@ -58,6 +64,8 @@ Tips:
 - Start permissive (`additionalProperties` omitted), tighten when the API is stable
 - Use `assertJsonSchema(schema, body)` — never pass `APIResponse`
 - Enable `"resolveJsonModule": true` in `tsconfig.json`
+
+
 
 ### Factory pattern (when you need unique users)
 
@@ -84,17 +92,22 @@ Improvements:
 - Move hardcoded `loggedInUserName: "kundalik jadhav"` to env or derive from API `/auth/me`
 - Export types from `types/` if shared across many files
 
+
+
 ## Checklist
 
-- [ ] Rename `health-shema.json` → `health.schema.json` and update imports
-- [ ] Add `resolveJsonModule` to `tsconfig.json`
+- [x] Rename `health-shema.json` → `health.schema.json` and update imports
+- [x] Add `resolveJsonModule` to `tsconfig.json`
 - [ ] Add `types/api/health.ts`
 - [ ] One folder per API resource under `test-data/api/`
 - [ ] Decide: fill or delete empty `users.*.ts` stubs
 - [ ] Add factory only when a test needs unique mutable data
+
+
 
 ## Pitfalls
 
 - Duplicate `health.get.ts` at `test-data/api/health.get.ts` vs nested folder — keep **one** location
 - Don’t put large fixtures JSON in specs
 - Keep schema and TypeScript interface in sync when fields change
+

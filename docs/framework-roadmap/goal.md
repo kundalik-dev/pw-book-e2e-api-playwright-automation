@@ -2,7 +2,7 @@
 
 Work **top to bottom**. Finish (or consciously defer) each goal before starting the next. Check boxes as you go.
 
-Guides: see [`README.md`](./README.md) in this folder.
+Guides: see `[README.md](./README.md)` in this folder.
 
 ---
 
@@ -20,12 +20,14 @@ Guides: see [`README.md`](./README.md) in this folder.
 
 ---
 
+
+
 ## Goal 2 — TypeScript + schema hygiene (quick wins)
 
 **Why early:** Unblocks reliable JSON schema imports and naming consistency.
 
-- [ ] Add `"resolveJsonModule": true` to `tsconfig.json`
-- [ ] Rename `health-shema.json` → `health.schema.json` and fix imports
+- [x] Add `"resolveJsonModule": true` to `tsconfig.json`
+- [x] Rename `health-shema.json` → `health.schema.json` and fix imports
 - [ ] Remove or merge duplicate `test-data/api/health.get.ts` if it conflicts with `test-data/api/health/`
 - [ ] Run health schema test: `pnpm playwright test tests/api/health -g "schema"`
 - [ ] Read [05-data-schema-types.md](./05-data-schema-types.md)
@@ -33,6 +35,8 @@ Guides: see [`README.md`](./README.md) in this folder.
 **Done when:** Schema JSON imports compile cleanly and the schema test still passes.
 
 ---
+
+
 
 ## Goal 3 — Typed API layer for health (pattern to copy)
 
@@ -48,6 +52,8 @@ Guides: see [`README.md`](./README.md) in this folder.
 
 ---
 
+
+
 ## Goal 4 — Auth setup + storageState
 
 **Why now:** Speeds E2E and matches documented JWT/auth flows.
@@ -62,6 +68,8 @@ Guides: see [`README.md`](./README.md) in this folder.
 
 ---
 
+
+
 ## Goal 5 — Real API auth tests + fix misnamed login API
 
 **Why:** Docs describe `/auth/login`; current `tests/api/login` is not real coverage.
@@ -74,6 +82,8 @@ Guides: see [`README.md`](./README.md) in this folder.
 **Done when:** API login success/failure cases exist and pass against local/QA API.
 
 ---
+
+
 
 ## Goal 6 — Scripts, reporters, env cleanup
 
@@ -89,6 +99,8 @@ Guides: see [`README.md`](./README.md) in this folder.
 
 ---
 
+
+
 ## Goal 7 — Fill critical stubs (POM + tests)
 
 **Why:** Empty folders create false confidence.
@@ -101,6 +113,8 @@ Guides: see [`README.md`](./README.md) in this folder.
 **Done when:** Register + books have at least one real UI and one real E2E path each.
 
 ---
+
+
 
 ## Goal 8 — CI pipeline
 
@@ -115,6 +129,8 @@ Guides: see [`README.md`](./README.md) in this folder.
 
 ---
 
+
+
 ## Goal 9 — Scale polish (optional / later)
 
 - [ ] Data factories for unique users
@@ -126,11 +142,13 @@ Guides: see [`README.md`](./README.md) in this folder.
 
 ---
 
+
+
 ## How to use this file
 
 1. Pick the first unchecked Goal.
 2. Open its guide link and implement in a focused branch/commit.
 3. Run the affected tests before marking **Done when**.
-4. Update [`AGENTS.md`](../../AGENTS.md) only if conventions change permanently.
+4. Update `[AGENTS.md](../../AGENTS.md)` only if conventions change permanently.
 
 Orientation reading (once): [01-current-state-and-gaps.md](./01-current-state-and-gaps.md).
