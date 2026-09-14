@@ -6,7 +6,7 @@ const qaEnv: EnvConfig = {
   envName: "qa Env",
 
   // browser and test configuration
-  headless: false,
+  headless: true,
   screenshot: "on",
 };
 

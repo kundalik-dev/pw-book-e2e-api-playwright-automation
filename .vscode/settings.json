@@ -1,5 +1,29 @@
 {
+  "workbench.colorTheme": "GitHub Dark Default",
+  "editor.fontFamily": "Cascadia Code, Consolas, monospace",
+  "editor.fontLigatures": true,
   "editor.fontSize": 15,
-  "terminal.integrated.fontSize": 14,
-  "workbench.colorTheme": "Visual Studio Dark"
+  "editor.lineHeight": 24,
+  "editor.semanticHighlighting.enabled": true,
+
+  //
+  "editor.bracketPairColorization.enabled": true,
+
+  "editor.semanticTokenColorCustomizations": {
+    "[GitHub Dark Default]": {
+      "enabled": true,
+      "rules": {
+        "class": {
+          "foreground": "#FFA657",
+          "bold": true
+        },
+        "interface": "#79C0FF",
+        "type": "#79C0FF",
+        "method": "#D2A8FF",
+        "property": "#A5D6FF",
+        "parameter": "#FFA657",
+        "variable.readonly": "#7EE787"
+      }
+    }
+  }
 }
