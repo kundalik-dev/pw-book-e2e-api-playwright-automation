@@ -1,3 +1,5 @@
+import envConfig from "../env/env-config";
+
 // Login Page Basic data types and data
 interface LoginPageData {
   pageTitle: string;
@@ -36,8 +38,9 @@ interface LoginData {
 
 const loginUsers: LoginData = {
   valid: {
-    userEmail: "kundalik.dev@gmail.com",
-    password: "Admin@123",
+    // Pulled from .env via env/qa-env.ts or env/prod-env.ts (EMAIL / PASSWORD)
+    userEmail: envConfig.validEmail,
+    password: envConfig.validPassword,
     loggedInUserName: "kundalik jadhav",
   },
   inValid: [

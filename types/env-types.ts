@@ -13,7 +13,9 @@ type ViewportMode = {
 interface EnvConfig {
   baseURL: string;
   apiBaseURL: string;
-  envName: string;
+  envName: string | undefined;
+  validEmail: string;
+  validPassword: string;
 
   // browser and test configurations
   headless: boolean;

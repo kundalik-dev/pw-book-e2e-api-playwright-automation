@@ -1,13 +1,8 @@
-import dotenv from "dotenv";
-import path from "path";
+import "../utils/load-dotenv";
 import prodEnv from "./prod-env";
 import qaEnv from "./qa-env";
-import { getEnvConfig } from "./get-env-config";
+import { getEnvConfig } from "../utils/get-env-config";
 import type { EnvCollection } from "../types/env-types";
-
-dotenv.config({
-  path: path.resolve(__dirname, "../.env"),
-});
 
 const envCollection: EnvCollection = {
   QA: qaEnv,

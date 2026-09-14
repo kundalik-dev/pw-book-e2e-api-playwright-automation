@@ -1,5 +1,5 @@
 import type { EnvConfig, EnvCollection } from "../types/env-types";
-import { hasOwnKey } from "../utils/object-utils";
+import { hasOwnKey } from "./object-utils";
 
 export function getEnvConfig(
   collection: EnvCollection,
