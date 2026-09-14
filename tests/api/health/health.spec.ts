@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import envConfig from "../../../env/env-config";
 import { apiBaseURL, getHeader } from "../../../utils/api-helpers";
 import { healthApiData } from "../../../test-data/api/health/health.get";
-import { jsonSchemaValidator } from "../../../utils/jsonSchemaValidator";
+import { assertJsonSchema } from "../../../utils/jsonSchemaValidator";
 import healthApiSchema from "../../../test-data/api/health/health-shema.json";
 
 test.describe("Heath API - My Test @api", () => {
@@ -69,7 +69,9 @@ test.describe("Health API - Functional tests @api @smoke", () => {
 
   test("should match json schema", async ({ request }) => {
     const response = await request.get(apiBaseURL(healthApiData.endpoint));
-    const isValid = jsonSchemaValidator(healthApiSchema, response);
-    expect(isValid).toBeTruthy();
+    const body = await response.json();
+    assertJsonSchema(healthApiSchema, body);
   });
+
+  
 });
