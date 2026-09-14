@@ -41,3 +41,9 @@ const sortedDesc = [...products].sort((a, b) => b - a);
 console.log(sortedAsc);
 // Output: [ 7.99, 15.34, 25.99, 34.99, 56.33]
 ```
+
+# My API Learning
+
+## Remember
+
+- `response.headers()` returns a plain JavaScript object where all header keys are `lower‑cased` like `content-type` instead of `Content-Type`.
