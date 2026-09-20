@@ -2,27 +2,27 @@
 
 ## What this project already does well
 
-| Area | Reality today |
-|------|----------------|
+| Area          | Reality today                                          |
+| ------------- | ------------------------------------------------------ |
 | Test taxonomy | `tests/ui`, `tests/e2e`, `tests/api` with clear intent |
-| Env | Typed `EnvConfig`, QA/PROD switch, secrets via `.env` |
-| POM | `LoginPage` uses `getByRole` + `getByTestId` |
-| API data | `healthApiData` separates expectations from assertions |
-| Schema | Ajv helper `assertJsonSchema` with compile cache |
-| Docs | Naming, UI vs E2E, endpoint inventory |
+| Env           | Typed `EnvConfig`, QA/PROD switch, secrets via `.env`  |
+| POM           | `LoginPage` uses `getByRole` + `getByTestId`           |
+| API data      | `healthApiData` separates expectations from assertions |
+| Schema        | Ajv helper `assertJsonSchema` with compile cache       |
+| Docs          | Naming, UI vs E2E, endpoint inventory                  |
 
 ## What blocks scale
 
-| Gap | Why it hurts |
-|-----|----------------|
-| Empty `fixtures/` | Every spec repeats `new LoginPage(page)`; hard to share auth/API |
-| No `storageState` | Every E2E re-logins; no shared authenticated context |
-| Raw `request.get` | Paths, headers, JSON parse duplicated; easy to pass wrong types |
-| Stub pages/tests | Register/books/users look like coverage but are empty |
-| HTML reporter only | Weak for CI gates and history |
-| Few npm scripts | No `test:api` / `test:smoke` / typecheck |
-| QA ≈ PROD URLs | Env switch does not yet model real environments |
-| `tsconfig` gaps | Need `resolveJsonModule` for schema JSON imports |
+| Gap                | Why it hurts                                                     |
+| ------------------ | ---------------------------------------------------------------- |
+| Empty `fixtures/`  | Every spec repeats `new LoginPage(page)`; hard to share auth/API |
+| No `storageState`  | Every E2E re-logins; no shared authenticated context             |
+| Raw `request.get`  | Paths, headers, JSON parse duplicated; easy to pass wrong types  |
+| Stub pages/tests   | Register/books/users look like coverage but are empty            |
+| HTML reporter only | Weak for CI gates and history                                    |
+| Few npm scripts    | No `test:api` / `test:smoke` / typecheck                         |
+| QA ≈ PROD URLs     | Env switch does not yet model real environments                  |
+| `tsconfig` gaps    | Need `resolveJsonModule` for schema JSON imports                 |
 
 ## Target architecture (mental model)
 

@@ -8,11 +8,11 @@ Guidance for AI agents and contributors working in this repository. Prefer these
 
 Playwright + TypeScript automation for **pw-books** (books library app).
 
-| Layer | Purpose | Location |
-|-------|---------|----------|
-| **UI** | Presentation only: layout, visibility, labels, links — no backend-dependent flows | `tests/ui/` |
-| **E2E** | Full user journeys that hit real FE + API + auth | `tests/e2e/` |
-| **API** | HTTP contract, status, headers, body, schema | `tests/api/` |
+| Layer   | Purpose                                                                           | Location     |
+| ------- | --------------------------------------------------------------------------------- | ------------ |
+| **UI**  | Presentation only: layout, visibility, labels, links — no backend-dependent flows | `tests/ui/`  |
+| **E2E** | Full user journeys that hit real FE + API + auth                                  | `tests/e2e/` |
+| **API** | HTTP contract, status, headers, body, schema                                      | `tests/api/` |
 
 Stack: `@playwright/test`, TypeScript (`strict`), `pnpm`, `dotenv`, `ajv` (JSON Schema).
 
@@ -146,14 +146,14 @@ api/
 
 **Rules of thumb**
 
-| Concern | Where |
-|---------|--------|
-| TypeScript shapes | `types/` (or colocated `*.types.ts`) |
-| Expected values / tables | `test-data/` |
+| Concern                        | Where                                             |
+| ------------------------------ | ------------------------------------------------- |
+| TypeScript shapes              | `types/` (or colocated `*.types.ts`)              |
+| Expected values / tables       | `test-data/`                                      |
 | JSON Schema for runtime assert | `test-data/**/*.schema.json` (or `*.schema.json`) |
-| Dynamic unique data | factories under `test-data/factories/` |
-| Secrets | `.env` only |
-| Shared page/API wiring | `fixtures/` via `test.extend` |
+| Dynamic unique data            | factories under `test-data/factories/`            |
+| Secrets                        | `.env` only                                       |
+| Shared page/API wiring         | `fixtures/` via `test.extend`                     |
 
 Keep schema filenames spelled **`schema`** (not `shema`). Enable `resolveJsonModule` in `tsconfig.json` when importing JSON.
 

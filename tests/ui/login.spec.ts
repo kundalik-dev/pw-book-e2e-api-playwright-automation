@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import LoginPage from "../../pages/login-page";
 import { loginPageData as loginData } from "../../test-data/ui/loginpage-data";
-import { Routes } from "../../test-data/routes-data";
+import { UIRoutes } from "../../test-data/routes-data";
 
 test.describe("Login Page - UI and Navigation Functional Tests @ui @login @smoke", () => {
   let loginPage: LoginPage;
@@ -34,6 +34,6 @@ test.describe("Login Page - UI and Navigation Functional Tests @ui @login @smoke
     page,
   }) => {
     await loginPage.navigateToRegisterPage();
-    await expect(page).toHaveURL(Routes.register);
+    await expect(page).toHaveURL(UIRoutes.register);
   });
 });

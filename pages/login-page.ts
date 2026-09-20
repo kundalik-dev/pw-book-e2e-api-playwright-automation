@@ -1,4 +1,5 @@
 import { type Locator, type Page } from "@playwright/test";
+import { UIRoutes } from "../test-data/routes-data";
 
 class LoginPage {
   readonly page: Page;
@@ -28,7 +29,7 @@ class LoginPage {
   }
 
   async navigate(): Promise<void> {
-    await this.page.goto("/login");
+    await this.page.goto(UIRoutes.login);
   }
 
   async navigateToRegisterPage(): Promise<void> {

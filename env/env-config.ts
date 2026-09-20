@@ -1,7 +1,7 @@
-import "../utils/load-dotenv";
+import "../utils/env-helpers/load-dotenv";
 import prodEnv from "./prod-env";
 import qaEnv from "./qa-env";
-import { getEnvConfig } from "../utils/get-env-config";
+import { getEnvConfig } from "../utils/env-helpers/get-env-config";
 import type { EnvCollection } from "../types/env-types";
 
 const envCollection: EnvCollection = {

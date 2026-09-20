@@ -16,10 +16,10 @@ End-to-end, UI, and API test automation for the **pw-books** library application
 - [pnpm](https://pnpm.io/) 10+
 - Running **pw-books** UI and API locally (defaults below), or a reachable QA environment
 
-| Service | Default URL |
-|---------|-------------|
-| UI | `http://localhost:5173` |
-| API | `http://localhost:3000/api` |
+| Service | Default URL                 |
+| ------- | --------------------------- |
+| UI      | `http://localhost:5173`     |
+| API     | `http://localhost:3000/api` |
 
 ## Setup
 
@@ -71,23 +71,23 @@ AGENTS.md           # Conventions for contributors & AI agents
 
 ### UI vs E2E vs API
 
-| Layer | Focus | Folder |
-|-------|--------|--------|
-| UI | Visible UI only (titles, fields, links) | `tests/ui/` |
-| E2E | Real journeys across FE + API | `tests/e2e/` |
-| API | Status, headers, body, schema | `tests/api/` |
+| Layer | Focus                                   | Folder       |
+| ----- | --------------------------------------- | ------------ |
+| UI    | Visible UI only (titles, fields, links) | `tests/ui/`  |
+| E2E   | Real journeys across FE + API           | `tests/e2e/` |
+| API   | Status, headers, body, schema           | `tests/api/` |
 
 See [docs/04-ui-and-e2e-testing-diff.md](./docs/04-ui-and-e2e-testing-diff.md).
 
 ## Documentation
 
-| Doc | Description |
-|-----|-------------|
-| [docs/framework-roadmap/](./docs/framework-roadmap/) | **Start here for improvements** — guides + sequenced goals |
-| [docs/framework-roadmap/goal.md](./docs/framework-roadmap/goal.md) | Step-by-step goals & fixes checklist |
-| [AGENTS.md](./AGENTS.md) | Project conventions for humans and AI agents |
-| [docs/test-case-naming.md](./docs/test-case-naming.md) | `should …` naming patterns |
-| [docs/api-endpoints.md](./docs/api-endpoints.md) | API endpoint inventory |
+| Doc                                                                | Description                                                |
+| ------------------------------------------------------------------ | ---------------------------------------------------------- |
+| [docs/framework-roadmap/](./docs/framework-roadmap/)               | **Start here for improvements** — guides + sequenced goals |
+| [docs/framework-roadmap/goal.md](./docs/framework-roadmap/goal.md) | Step-by-step goals & fixes checklist                       |
+| [AGENTS.md](./AGENTS.md)                                           | Project conventions for humans and AI agents               |
+| [docs/test-case-naming.md](./docs/test-case-naming.md)             | `should …` naming patterns                                 |
+| [docs/api-endpoints.md](./docs/api-endpoints.md)                   | API endpoint inventory                                     |
 
 ## Test naming
 
@@ -105,9 +105,9 @@ Next priorities (fixtures → schema hygiene → typed API → auth setup → CI
 
 ## Scripts
 
-| Script | Command |
-|--------|---------|
-| Run all tests | `pnpm test` |
+| Script           | Command       |
+| ---------------- | ------------- |
+| Run all tests    | `pnpm test`   |
 | Show HTML report | `pnpm report` |
 
 Additional scripts (`test:api`, `test:smoke`, etc.) are planned — see the framework roadmap.

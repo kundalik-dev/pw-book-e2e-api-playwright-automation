@@ -1,6 +1,6 @@
-import "../utils/load-dotenv";
+import "../utils/env-helpers/load-dotenv";
 import type { EnvConfig } from "../types/env-types";
-import { requireEnv } from "../utils/require-env";
+import { requireEnv } from "../utils/env-helpers/require-env";
 
 const qaEnv: EnvConfig = {
   baseURL: "http://localhost:5173",

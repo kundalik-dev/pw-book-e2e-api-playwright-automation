@@ -1,4 +1,4 @@
-import "./utils/load-dotenv";
+import "./utils/env-helpers/load-dotenv";
 import { defineConfig, devices } from "@playwright/test";
 import envConfig from "./env/env-config";
 
