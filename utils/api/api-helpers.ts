@@ -21,7 +21,7 @@ function getHeader(response: APIResponse, name: string): string | undefined {
 }
 
 /**
- * authHeaders is a helper function to add authentication headers to the request
+ * authHeaders is a helper function to add authentication headers to the request - Bearer Token
  * @param token - The token to add to the request
  * @returns The headers to add to the request
  */
@@ -46,10 +46,18 @@ async function getApi(
   });
 }
 
-async function postApi(
+/**
+ * postApi is a helper function to make a POST request to the API
+ * @param request - The request context
+ * @param path - The path to the API endpoint
+ * @param requestBody - The request body
+ * @param options - The options for the request
+ * @returns The response from the API
+ */
+async function postApi<TBody>(
   request: APIRequestContext,
   path: string,
-  requestBody: any,
+  requestBody: TBody,
   options?: { token?: string },
 ) {
   return request.post(createApiEndpoint(path), {

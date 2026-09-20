@@ -1,21 +1,21 @@
 import type { APIRequestContext, APIResponse } from "@playwright/test";
 import type {
-  ServerHealthResponse,
   DbHealthResponse,
-} from "../../types/api/health";
+  HealthResponse,
+} from "../../types/api/health-types";
 import { getApi } from "./api-helpers";
 import { APIRoutes } from "../../test-data/routes-data";
 
 /**
  * getServerHealth is a helper function to get the health of the backend API
  * @param request - The request context
- * @returns The response and body from the API
+ * @returns { response: APIResponse; body: HealthResponse } The response and body from the API
  */
 async function getServerHealth(
   request: APIRequestContext,
-): Promise<{ response: APIResponse; body: ServerHealthResponse }> {
+): Promise<{ response: APIResponse; body: HealthResponse }> {
   const response = await getApi(request, APIRoutes.health);
-  const body = (await response.json()) as ServerHealthResponse;
+  const body = (await response.json()) as HealthResponse;
   return { response, body };
 }
 

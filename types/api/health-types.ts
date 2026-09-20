@@ -1,4 +1,4 @@
-export type ServerHealthResponse = {
+export type HealthResponse = {
   status: string;
 };
 

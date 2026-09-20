@@ -18,7 +18,9 @@ test.describe("POST /login @api @smoke @login", () => {
     assertJsonSchema(loginResponseSchema, body);
     expect((body as LoginResponse).user.email).toBe(loginUsers.valid.email);
   });
+});
 
+test.describe("POST /auth/login negatives @api @login", () => {
   // negatives — data-driven
   for (const user of loginUsers.invalid) {
     test(`should fail when ${user.testCase}`, async ({ request }) => {

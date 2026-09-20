@@ -4,7 +4,7 @@ import {
   dbHealthApiData,
 } from "../../../test-data/api/health/get-health-data";
 import { assertJsonSchema } from "../../../utils/jsonSchemaValidator";
-import { getDbHealth, getServerHealth } from "../../../utils/api/health.api";
+import { getDbHealth, getServerHealth } from "../../../utils/api/health-api";
 import { createApiEndpoint, getHeader } from "../../../utils/api/api-helpers";
 import serverHealthSchema from "../../../test-data/api/health/server-health-schema.json";
 import dbHealthSchema from "../../../test-data/api/health/db-health-schema.json";
