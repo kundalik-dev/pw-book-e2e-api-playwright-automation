@@ -1,18 +1,26 @@
-import { APIRequestContext, APIResponse } from "@playwright/test"; 
+import { APIRequestContext, APIResponse } from "@playwright/test";
 import { postApi } from "./api-helpers";
-import { LoginRequest,LoginResponse } from "../../types/api/login-types";
+import { APIRoutes } from "../../test-data/routes-data";
+import {
+  LoginErrorResponse,
+  LoginRequest,
+  LoginResponse,
+} from "../../types/api/login-types";
 
 /** Login user and return response body
  * @param request - Playwright APIRequestContext
- * @param data - LoginRequest
- * @returns { response: APIResponse; body: LoginResponse }
+ * @param requestBody - LoginRequest body
+ * @returns { response: APIResponse; body: LoginResponse | LoginErrorResponse }
  */
 async function loginUser(
   request: APIRequestContext,
-  data: LoginRequest,
-): Promise<{ response: APIResponse; body: LoginResponse }> {
-  const response = await postApi(request, "/auth/login", data);
-  const body = (await response.json()) as LoginResponse;
+  requestBody: LoginRequest,
+): Promise<{
+  response: APIResponse;
+  body: LoginResponse | LoginErrorResponse;
+}> {
+  const response = await postApi(request, APIRoutes.login, requestBody);
+  const body = (await response.json()) as LoginResponse | LoginErrorResponse;
   return { response, body };
 }
 

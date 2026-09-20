@@ -4,6 +4,7 @@ import type {
   DbHealthResponse,
 } from "../../types/api/health";
 import { getApi } from "./api-helpers";
+import { APIRoutes } from "../../test-data/routes-data";
 
 /**
  * getServerHealth is a helper function to get the health of the backend API
@@ -13,7 +14,7 @@ import { getApi } from "./api-helpers";
 async function getServerHealth(
   request: APIRequestContext,
 ): Promise<{ response: APIResponse; body: ServerHealthResponse }> {
-  const response = await getApi(request, "/health");
+  const response = await getApi(request, APIRoutes.health);
   const body = (await response.json()) as ServerHealthResponse;
   return { response, body };
 }
@@ -26,7 +27,7 @@ async function getServerHealth(
 async function getDbHealth(
   request: APIRequestContext,
 ): Promise<{ response: APIResponse; body: DbHealthResponse }> {
-  const response = await getApi(request, "/health/db");
+  const response = await getApi(request, APIRoutes.dbHealth);
   const body = (await response.json()) as DbHealthResponse;
   return { response, body };
 }

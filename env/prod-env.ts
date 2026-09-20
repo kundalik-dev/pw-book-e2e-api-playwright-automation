@@ -4,7 +4,7 @@ import { requireEnv } from "../utils/require-env";
 
 const prodEnv: EnvConfig = {
   baseURL: "http://localhost:5173",
-  apiBaseURL: "http://localhost:3000/api",
+  apiBaseURL: "http://localhost:3000",
   envName: "Prod env",
 
   get validEmail() {

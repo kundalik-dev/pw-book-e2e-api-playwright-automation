@@ -1,6 +1,5 @@
-import { APIResponse, APIRequestContext, APIRequest } from "@playwright/test";
+import { APIResponse, APIRequestContext } from "@playwright/test";
 import envConfig from "../../env/env-config";
-import { PostLoginRequest } from "../../types/api/login-types";
 
 /**
  * createApiEndpoint is a helper function to create the API endpoint
@@ -50,11 +49,11 @@ async function getApi(
 async function postApi(
   request: APIRequestContext,
   path: string,
-  body: PostLoginRequest,
+  requestBody: any,
   options?: { token?: string },
 ) {
   return request.post(createApiEndpoint(path), {
-    data: body,
+    data: requestBody,
     headers: options?.token ? authHeaders(options.token) : undefined,
   });
 }

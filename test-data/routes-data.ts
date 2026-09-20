@@ -12,9 +12,13 @@ export const UIRoutes: UIRoutesType = {
 
 // API Routes
 export interface APIRoutesType {
+  health: string;
+  dbHealth: string;
   login: string;
 }
 
 export const APIRoutes: APIRoutesType = {
-  login: "/login",
+  health: "/api/health",
+  dbHealth: "/api/health/db",
+  login: "/api/auth/login",
 };

@@ -6,8 +6,8 @@ import {
 import { assertJsonSchema } from "../../../utils/jsonSchemaValidator";
 import { getDbHealth, getServerHealth } from "../../../utils/api/health.api";
 import { createApiEndpoint, getHeader } from "../../../utils/api/api-helpers";
-import serverHealthSchema from "../../../test-data/api/health/server-health.schema.json";
-import dbHealthSchema from "../../../test-data/api/health/db-health.schema.json";
+import serverHealthSchema from "../../../test-data/api/health/server-health-schema.json";
+import dbHealthSchema from "../../../test-data/api/health/db-health-schema.json";
 
 // GET Health - functional
 test.describe("GET /health @api @smoke @health", () => {
@@ -91,7 +91,9 @@ test.describe("GET /health/db negatives @api @db @health", () => {
     const body = await response.json();
     expect(response.status()).toBe(404);
     expect(getHeader(response, "Content-Type")).toMatch(/application\/json/);
-    expect(body.error.message).toContain("Route not found: POST /api/health/db");
+    expect(body.error.message).toContain(
+      "Route not found: POST /api/health/db",
+    );
   });
 
   test("should return 404 response for wrong endpoint on GET /health/dbs", async ({
@@ -101,6 +103,8 @@ test.describe("GET /health/db negatives @api @db @health", () => {
     const body = await response.json();
     expect(response.status()).toBe(404);
     expect(getHeader(response, "Content-Type")).toMatch(/application\/json/);
-    expect(body.error.message).toContain("Route not found: GET /api/health/dbs");
+    expect(body.error.message).toContain(
+      "Route not found: GET /api/health/dbs",
+    );
   });
 });
