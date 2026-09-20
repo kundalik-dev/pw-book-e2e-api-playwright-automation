@@ -1,4 +1,4 @@
-import envConfig from "../env/env-config";
+import envConfig from "../../env/env-config";
 
 // Login Page Basic data types and data
 interface LoginPageData {

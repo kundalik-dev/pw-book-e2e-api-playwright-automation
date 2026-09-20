@@ -4,7 +4,7 @@ import BooksPage from "../../pages/books-page";
 import {
   loginPageData as loginData,
   loginUsers,
-} from "../../test-data/loginpage-data";
+} from "../../test-data/ui/loginpage-data";
 
 test.describe("Login Page Functional Tests @login @e2e", () => {
   let loginPage: LoginPage;

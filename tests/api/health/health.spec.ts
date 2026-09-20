@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import {
   healthApiData,
   dbHealthApiData,
-} from "../../../test-data/api/health/health.get";
+} from "../../../test-data/api/health/get-health-data";
 import { assertJsonSchema } from "../../../utils/jsonSchemaValidator";
 import { getDbHealth, getServerHealth } from "../../../utils/api/health.api";
 import { createApiEndpoint, getHeader } from "../../../utils/api/api-helpers";

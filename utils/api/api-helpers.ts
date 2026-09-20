@@ -1,6 +1,6 @@
-import { APIResponse,APIRequestContext, request } from "@playwright/test";
-import envConfig from "../../env/env-config"; 
- 
+import { APIResponse, APIRequestContext, APIRequest } from "@playwright/test";
+import envConfig from "../../env/env-config";
+import { PostLoginRequest } from "../../types/api/login-types";
 
 /**
  * createApiEndpoint is a helper function to create the API endpoint
@@ -8,9 +8,8 @@ import envConfig from "../../env/env-config";
  * @returns The API endpoint
  */
 function createApiEndpoint(path: string): string {
-    return `${envConfig.apiBaseURL}${path}`;
-  }
-  
+  return `${envConfig.apiBaseURL}${path}`;
+}
 
 /**
  * getHeader is a helper function to get a header from the response
@@ -18,10 +17,9 @@ function createApiEndpoint(path: string): string {
  * @param name - The name of the header to get
  * @returns The value of the header
  */
-  function getHeader(response: APIResponse, name: string): string | undefined {
-    return response.headers()[name.toLowerCase()];
-  }
-
+function getHeader(response: APIResponse, name: string): string | undefined {
+  return response.headers()[name.toLowerCase()];
+}
 
 /**
  * authHeaders is a helper function to add authentication headers to the request
@@ -32,7 +30,6 @@ export function authHeaders(token: string) {
   return { Authorization: `Bearer ${token}` };
 }
 
-
 /**
  * getApi is a helper function to make a GET request to the API
  * @param request - The request context
@@ -40,7 +37,7 @@ export function authHeaders(token: string) {
  * @param options - The options for the request
  * @returns The response from the API
  */
- async function getApi(
+async function getApi(
   request: APIRequestContext,
   path: string,
   options?: { token?: string },
@@ -50,4 +47,16 @@ export function authHeaders(token: string) {
   });
 }
 
-  export { createApiEndpoint, getHeader, getApi };
+async function postApi(
+  request: APIRequestContext,
+  path: string,
+  body: PostLoginRequest,
+  options?: { token?: string },
+) {
+  return request.post(createApiEndpoint(path), {
+    data: body,
+    headers: options?.token ? authHeaders(options.token) : undefined,
+  });
+}
+
+export { createApiEndpoint, getHeader, getApi, postApi };

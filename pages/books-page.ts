@@ -1,5 +1,5 @@
 import { type Locator, type Page } from "@playwright/test";
-import { loginUsers } from "../test-data/loginpage-data";
+import { loginUsers } from "../test-data/ui/loginpage-data";
 
 class BooksPage {
   private readonly page: Page;
