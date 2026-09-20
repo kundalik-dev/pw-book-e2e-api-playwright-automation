@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { assertJsonSchema } from "../../../utils/jsonSchemaValidator";
-import { loginUser } from "../../../utils/api/login.api";
+import { loginUser } from "../../../utils/api/login-api";
 import { loginUsers } from "../../../test-data/api/login/login-api-data";
 import loginResponseSchema from "../../../test-data/api/login/login-response-schema.json";
 import {
   LoginErrorResponse,
   LoginResponse,
-} from "../../../types/api/login-types";
+} from "../../../types/api/login-api-types";
 
 test.describe("POST /login @api @smoke @login", () => {
   test("should login with valid credential", async ({ request }) => {

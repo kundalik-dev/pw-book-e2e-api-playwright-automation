@@ -5,7 +5,7 @@ import {
   LoginErrorResponse,
   LoginRequest,
   LoginResponse,
-} from "../../types/api/login-types";
+} from "../../types/api/login-api-types";
 
 /** Login user and return response body
  * @param request - Playwright APIRequestContext

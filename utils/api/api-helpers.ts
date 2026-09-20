@@ -66,4 +66,4 @@ async function postApi<TBody>(
   });
 }
 
-export { createApiEndpoint, getHeader, getApi, postApi };
+export { createApiEndpoint,getHeader, getApi, postApi };

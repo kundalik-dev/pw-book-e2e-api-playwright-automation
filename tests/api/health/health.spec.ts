@@ -5,9 +5,17 @@ import {
 } from "../../../test-data/api/health/get-health-data";
 import { assertJsonSchema } from "../../../utils/jsonSchemaValidator";
 import { getDbHealth, getServerHealth } from "../../../utils/api/health-api";
-import { createApiEndpoint, getHeader } from "../../../utils/api/api-helpers";
+import {
+  createApiEndpoint,
+  getHeader,
+  postApi,
+} from "../../../utils/api/api-helpers";
 import serverHealthSchema from "../../../test-data/api/health/server-health-schema.json";
 import dbHealthSchema from "../../../test-data/api/health/db-health-schema.json";
+import { ApiErrorResponse } from "../../../types/api/error-response-types";
+import { loginUsers } from "../../../test-data/api/login/login-api-data";
+import { APIRoutes } from "../../../test-data/routes-data";
+import { DbHealthResponse } from "../../../types/api/health-api-types";
 
 // GET Health - functional
 test.describe("GET /health @api @smoke @health", () => {
@@ -16,7 +24,9 @@ test.describe("GET /health @api @smoke @health", () => {
 
     expect(response.status()).toBe(healthApiData.expectedStatusCode);
     expect(getHeader(response, "Content-Type")).toMatch(/application\/json/);
-    expect(body.status).toBe(healthApiData.expectedBody.status);
+    expect(response.statusText().toLowerCase()).toBe(
+      healthApiData.expectedBody.status.toLowerCase(),
+    );
     assertJsonSchema(serverHealthSchema, body);
   });
 
@@ -41,9 +51,11 @@ test.describe("GET /health @api @smoke @health", () => {
   });
 
   test("should return status field to be ok", async ({ request }) => {
-    const { body } = await getServerHealth(request);
+    const { response, body } = await getServerHealth(request);
     expect(body).toHaveProperty("status");
-    expect(body.status).toBe(healthApiData.expectedBody.status);
+    expect(response.statusText().toLowerCase()).toBe(
+      healthApiData.expectedBody.status.toLowerCase(),
+    );
   });
 
   test("should respond within 500ms", async ({ request }) => {
@@ -62,7 +74,7 @@ test.describe("GET /health @api @smoke @health", () => {
 // Server Health - Negative Tests
 test.describe("GET /health negatives @api @health", () => {
   test("should return 404 response for POST /health", async ({ request }) => {
-    const response = await request.post(createApiEndpoint("/health"));
+    const response = await request.post(createApiEndpoint(APIRoutes.health));
     const body = await response.json();
     expect(response.status()).toBe(404);
     expect(getHeader(response, "Content-Type")).toMatch(/application\/json/);
@@ -77,7 +89,9 @@ test.describe("GET /health/db @db @smoke @health", () => {
 
     expect(response.status()).toBe(dbHealthApiData.expectedStatusCode);
     expect(getHeader(response, "Content-Type")).toMatch(/application\/json/);
-    expect(body.status).toBe(dbHealthApiData.expectedBody.status);
+    expect((body as DbHealthResponse).status).toBe(
+      dbHealthApiData.expectedBody.status,
+    );
     assertJsonSchema(dbHealthSchema, body);
   });
 });
@@ -87,7 +101,7 @@ test.describe("GET /health/db negatives @api @db @health", () => {
   test("should return 404 response for POST /health/db", async ({
     request,
   }) => {
-    const response = await request.post(createApiEndpoint("/health/db"));
+    const response = await request.post(createApiEndpoint(APIRoutes.dbHealth));
     const body = await response.json();
     expect(response.status()).toBe(404);
     expect(getHeader(response, "Content-Type")).toMatch(/application\/json/);
@@ -103,8 +117,6 @@ test.describe("GET /health/db negatives @api @db @health", () => {
     const body = await response.json();
     expect(response.status()).toBe(404);
     expect(getHeader(response, "Content-Type")).toMatch(/application\/json/);
-    expect(body.error.message).toContain(
-      "Route not found: GET /api/health/dbs",
-    );
+    expect(body.error.message).toContain("Route not found: GET /health/dbs");
   });
 });

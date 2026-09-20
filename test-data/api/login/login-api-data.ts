@@ -1,6 +1,6 @@
 // login api test data and types
 import envConfig from "../../../env/env-config";
-import { LoginRequest } from "../../../types/api/login-types";
+import { LoginRequest } from "../../../types/api/login-api-types";
 
 type ValidLoginCase = LoginRequest & {
   expectedName: string; // optional assert helper
